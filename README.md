@@ -6,16 +6,20 @@ Copyright (c) 2018 JJ Posti <techtimejourney.net>
 This is free software, and you are welcome to redistribute it under
 GPL Version 2, June 1991″
 
+![qplayer](https://user-images.githubusercontent.com/29865797/42135763-5836403a-7d3f-11e8-8f62-a29ce0000df4.jpg)
 
-Current features:
+
+<b>Current features:</b>
 
 Should be able to play all the files that are supported by QTMultimedia
 
 Buttons include:
+
 Open, Play, Pause, Stop. There is also a navigation slider.
 ____________________
 
-Building:
+
+<b>Building:</b>
 
 
 Generally, you should be good to go when you install something like this:

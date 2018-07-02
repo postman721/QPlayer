@@ -1,12 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-int i;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     player= new QMediaPlayer(this);
 
     videos = new QVideoWidget(this);
@@ -60,5 +60,17 @@ void MainWindow::on_actionPlay_triggered()
 {
     player->play();
     ui->statusBar->showMessage("Playback resumes.");
+
+}
+
+
+void MainWindow::on_actionExit_fullscreen_triggered()
+{
+    videos->setFullScreen(false);
+}
+
+void MainWindow::on_actionFullscreen_triggered()
+{
+    videos->setFullScreen(true);
 
 }

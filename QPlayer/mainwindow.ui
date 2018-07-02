@@ -50,6 +50,12 @@ font-size: 12px;}
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">QToolbar{color:#ffffff; 
 background-color:#353535; 
@@ -67,28 +73,79 @@ font-size: 12px;}</string>
    <addaction name="actionPause"/>
    <addaction name="actionPlay"/>
    <addaction name="actionStop"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="actionFullscreen"/>
+   <addaction name="actionExit_fullscreen"/>
   </widget>
   <action name="actionOpen">
    <property name="text">
-    <string>open</string>
+    <string>Open</string>
    </property>
    <property name="toolTip">
     <string>open</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionPause">
    <property name="text">
-    <string>pause</string>
+    <string>Pause</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionPlay">
    <property name="text">
-    <string>play</string>
+    <string>Play</string>
+   </property>
+   <property name="toolTip">
+    <string>Play</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionStop">
    <property name="text">
-    <string>stop</string>
+    <string>Stop</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionFullscreen">
+   <property name="text">
+    <string>Fullscreen</string>
+   </property>
+   <property name="toolTip">
+    <string>Press Alt+F4 to quit the fullscreen frame &amp;  press exit fullscreen</string>
+   </property>
+  </action>
+  <action name="actionExit_fullscreen">
+   <property name="text">
+    <string>Exit fullscreen</string>
+   </property>
+   <property name="toolTip">
+    <string>Press to quit fullscreen state</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
   </action>
  </widget>

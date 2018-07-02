@@ -11,7 +11,6 @@
 #include <QVideoWidget>
 
 using namespace std;
-extern int i;
 namespace Ui {
 class MainWindow;
 }
@@ -33,6 +32,11 @@ private slots:
     void on_actionPause_triggered();
 
     void on_actionPlay_triggered();
+
+    void on_actionFullscreen_triggered();
+
+
+    void on_actionExit_fullscreen_triggered();
 
 private:
     Ui::MainWindow *ui;

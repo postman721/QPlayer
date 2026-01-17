@@ -1,37 +1,33 @@
 # QPlayer
-QPlayer is a C++ and QT5 video player for files.
 
-Copyright (c) 2018 JJ Posti <techtimejourney.net>
+QPlayer is a  **C++ / Qt6** video player for local media files.
 
-This is free software, and you are welcome to redistribute it under
-GPL Version 2, June 1991″
+© 2018–2026 JJ Posti <techtimejourney.net>
+License: **GPL v2**
 
-![qplayer](https://user-images.githubusercontent.com/29865797/42135763-5836403a-7d3f-11e8-8f62-a29ce0000df4.jpg)
+## Features
+- Plays files/videos supported by **Qt Multimedia**
+- Open, Play, Pause, Stop  
+- Seek slider  
+- Fullscreen with **Esc** to exit
 
+## Building (Debian / Ubuntu – Qt6)
 
-<b>Current features:</b>
+Install dependencies:
 
-Should be able to play all the files that are supported by QTMultimedia
+```bash
+sudo apt install qt6-base-dev qt6-multimedia-dev qt6-tools-dev
+```
 
-Buttons include:
+Build with **Qt Creator** or:
 
-Open, Play, Pause, Stop. There is also a navigation slider.
-____________________
+```bash
+qmake6
+make
+```
 
+## Notes
+- Uses **Qt6 Multimedia**
 
-<b>Building:</b>
+- ESC key will quit full screen mode. Alt+F4 might also work there.
 
-
-Generally, you should be good to go when you install something like this:
-
-
-sudo yum install qt5-qtmultimedia-devel qt5-qtbase-devel .
-
-
-Also, be sure to install Qtcreator (qtcreator package) because you need to  build the project with it. 
-
-On Debian based systems you will also need to install something like: libqt5multimedia5-plugins .
-
-____________________________
-
-Original post is at: https://www.techtimejourney.net/qplayer/

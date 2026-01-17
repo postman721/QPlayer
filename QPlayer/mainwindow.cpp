@@ -7,11 +7,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    player= new QMediaPlayer(this);
+    // Qt 6: QMediaPlayer uses a separate QAudioOutput for sound.
+    player = new QMediaPlayer(this);
+    audioOutput = new QAudioOutput(this);
+    player->setAudioOutput(audioOutput);
 
     videos = new QVideoWidget(this);
     player->setVideoOutput(videos);
     this->setCentralWidget(videos);
+
+    // Ensure we receive Esc even when the video widget is fullscreen/focused.
+    videos->installEventFilter(this);
 
     slider= new QSlider(this);
     slider->setOrientation(Qt::Horizontal);
@@ -21,20 +27,41 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(player, &QMediaPlayer::durationChanged, slider, &QSlider::setMaximum);
     connect(player, &QMediaPlayer::positionChanged, slider, &QSlider::setValue);
-    connect(slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);}
+    connect(slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
+}
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    // QVideoWidget grabs focus in fullscreen, so handle Esc here.
+    if (obj == videos && event->type() == QEvent::KeyPress) {
+        auto *ke = static_cast<QKeyEvent*>(event);
+        if (ke->key() == Qt::Key_Escape && videos->isFullScreen()) {
+            videos->setFullScreen(false);
+            return true; // handled
+        }
+    }
+    return QMainWindow::eventFilter(obj, event);
+}
+
+
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QStringList filename=QFileDialog::getOpenFileNames(this, "Select movie file");
+    const QString filename = QFileDialog::getOpenFileName(this, "Select movie file");
+    if (filename.isEmpty())
+        return;
+
     ui->statusBar->showMessage("Select a file.");
-    player->setMedia(QUrl::fromLocalFile(filename.at(0)));
-    QFileInfo fileInfo(filename.at(0));
+
+    // Qt 6: setMedia() was replaced by setSource().
+    player->setSource(QUrl::fromLocalFile(filename));
+
+    QFileInfo fileInfo(filename);
     QString info(fileInfo.fileName());
     string show = info.toStdString();
     cout << show  << endl;
@@ -65,6 +92,7 @@ void MainWindow::on_actionPlay_triggered()
 
 
 void MainWindow::on_actionExit_fullscreen_triggered()
+
 {
     videos->setFullScreen(false);
 }

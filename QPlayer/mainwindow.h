@@ -3,12 +3,17 @@
 
 #include <QMainWindow>
 #include <QMediaPlayer>
+#include <QAudioOutput>
 #include <QFileDialog>
 #include <QSlider>
 #include <QString>
 #include <iostream>
 #include <QProgressBar>
 #include <QVideoWidget>
+#include <QUrl>
+#include <QFileInfo>
+#include <QEvent>
+#include <QKeyEvent>
 
 using namespace std;
 namespace Ui {
@@ -20,8 +25,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+protected:
+    // Handle Esc reliably even when the video widget has focus/fullscreen.
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
 private slots:
 
@@ -41,6 +50,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;
+    QAudioOutput *audioOutput;
     QSlider *slider;
     QProgressBar *bar;
     QVideoWidget *videos;

@@ -5,6 +5,8 @@ QPlayer is a  **C++ / Qt6** video player for local media files.
 © 2018–2026 JJ Posti <techtimejourney.net>
 License: **GPL v2**
 
+<img width="826" height="402" alt="Image" src="https://github.com/user-attachments/assets/62b51315-6443-46bd-98e4-e80aee5d7485" />
+
 ## Features
 - Plays files/videos supported by **Qt Multimedia**
 - Open, Play, Pause, Stop  
